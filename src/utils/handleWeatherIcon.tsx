@@ -22,9 +22,9 @@ import {
 } from "react-icons/wi";
 
 //Types
-import { weatherIconCodes } from "../types/weatherIconCodes.type.ts";
+import { WeatherIconCodes } from "../types/WeatherIconCodes.type.ts";
 
-export function handleWeatherIcon(code: weatherIconCodes): React.ReactElement {
+export function handleWeatherIcon(code: WeatherIconCodes): React.ReactElement {
     switch (code) {
         case "01d":
             return <WiDaySunny />;

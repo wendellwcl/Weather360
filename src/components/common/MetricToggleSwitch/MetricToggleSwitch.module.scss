@@ -1,0 +1,20 @@
+.switchContainer {
+    display: inline-flex;
+
+    label {
+        &:has(input:checked) {
+            background-color: rgb(180, 180, 180);
+        }
+
+        input {
+            position: absolute;
+            opacity: 0;
+            height: 0;
+            width: 0;
+        }
+
+        span {
+            pointer-events: none;
+        }
+    }
+}

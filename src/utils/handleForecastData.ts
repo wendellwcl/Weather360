@@ -11,7 +11,7 @@ import { getTomorrowDate } from "./getTomorrowDate";
 import { handleWeatherIcon } from "./handleWeatherIcon";
 
 //Types
-import { weatherIconCodes } from "../types/weatherIconCodes.type";
+import { WeatherIconCodes } from "../types/WeatherIconCodes.type";
 
 export function handleForecastData(forecastData: any[]) {
     const tomorrowDate = getTomorrowDate();
@@ -40,7 +40,7 @@ export function handleForecastData(forecastData: any[]) {
         const mostFrequent = getMostFrequent(formattedCodes);
         const iconCode = `${mostFrequent}d`;
 
-        return iconCode as weatherIconCodes;
+        return iconCode as WeatherIconCodes;
     }
 
     for (let i = 0; i < 4; i++) {

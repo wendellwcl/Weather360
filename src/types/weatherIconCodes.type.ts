@@ -1,4 +1,4 @@
-export type weatherIconCodes =
+export type WeatherIconCodes =
     | "01d"
     | "01n"
     | "02d"

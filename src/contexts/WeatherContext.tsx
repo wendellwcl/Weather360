@@ -1,4 +1,7 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+
+//Contexts
+import { LoadingContext } from "./LoadingContext";
 
 //Services
 import { fetchForecast, fetchWeather } from "../services/openWeatherApi";
@@ -12,7 +15,11 @@ import { IChildren } from "../interfaces/IChildren.interface";
 import { IForecastObj } from "../interfaces/IForecastObj.interface";
 import { IWeatherContext } from "../interfaces/IWeatherContext.interface";
 
+//Types
+import { Metrics } from "../types/Metrics.type";
+
 const DEFAULT_VALUE: IWeatherContext = {
+    setQuery: () => {},
     location: undefined,
     weatherDescription: undefined,
     weatherIcon: undefined,
@@ -26,11 +33,16 @@ const DEFAULT_VALUE: IWeatherContext = {
     sunrise: undefined,
     sunset: undefined,
     forecast: undefined,
+    metric: "°C",
+    setMetric: () => {},
 };
 
 export const WeatherContext = createContext<IWeatherContext>(DEFAULT_VALUE);
 
 const WeatherContextProvider = ({ children }: IChildren) => {
+    const { setLoading } = useContext(LoadingContext);
+
+    const [query, setQuery] = useState<string | undefined>(undefined);
     const [location, setLocation] = useState<string | undefined>(undefined);
     const [weatherDescription, setWeatherDescription] = useState<string | undefined>(undefined);
     const [weatherIcon, setWeatherIcon] = useState<React.ReactNode | undefined>(undefined);
@@ -44,31 +56,39 @@ const WeatherContextProvider = ({ children }: IChildren) => {
     const [sunrise, setSunrise] = useState<number | undefined>(undefined);
     const [sunset, setSunset] = useState<number | undefined>(undefined);
     const [forecast, setForecast] = useState<IForecastObj[] | undefined>(undefined);
+    const [metric, setMetric] = useState<Metrics>("°C");
 
     useEffect(() => {
         async function fecthData() {
-            const weather = await fetchWeather();
-            const forecast = await fetchForecast();
+            if (query) {
+                setLoading(true);
 
-            setLocation(weather.name);
-            setWeatherDescription(weather.weather[0].description);
-            setWeatherIcon(handleWeatherIcon(weather.weather[0].icon));
-            setTemp(weather.main.temp);
-            setTempFeelsLike(weather.main.feels_like);
-            setTempMin(weather.main.temp_min);
-            setTempMax(weather.main.temp_max);
-            setHumidity(weather.main.humidity);
-            setPressure(weather.main.pressure);
-            setWind(weather.wind.speed);
-            setSunrise(weather.sys.sunrise);
-            setSunset(weather.sys.sunset);
-            setForecast(handleForecastData(forecast.list));
+                const weather = await fetchWeather(query);
+                const forecast = await fetchForecast(query);
+
+                setLocation(weather.name);
+                setWeatherDescription(weather.weather[0].description);
+                setWeatherIcon(handleWeatherIcon(weather.weather[0].icon));
+                setTemp(weather.main.temp);
+                setTempFeelsLike(weather.main.feels_like);
+                setTempMin(weather.main.temp_min);
+                setTempMax(weather.main.temp_max);
+                setHumidity(weather.main.humidity);
+                setPressure(weather.main.pressure);
+                setWind(weather.wind.speed);
+                setSunrise(weather.sys.sunrise);
+                setSunset(weather.sys.sunset);
+                setForecast(handleForecastData(forecast.list));
+
+                setLoading(false);
+            }
         }
 
         fecthData();
-    }, []);
+    }, [query]);
 
     const CONTEXT_VALUE = {
+        setQuery,
         location,
         weatherDescription,
         weatherIcon,
@@ -82,6 +102,8 @@ const WeatherContextProvider = ({ children }: IChildren) => {
         sunrise,
         sunset,
         forecast,
+        metric,
+        setMetric,
     };
 
     return <WeatherContext.Provider value={CONTEXT_VALUE}>{children}</WeatherContext.Provider>;

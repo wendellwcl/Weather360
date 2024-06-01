@@ -18,17 +18,21 @@ async function fetchData(url: string) {
     }
 }
 
-export const fetchWeather = async () => {
+export const fetchWeather = async (query: string) => {
+    const encodedQuery = encodeURI(query);
+
     const data = await fetchData(
-        `https://api.openweathermap.org/data/2.5/weather?q=sao%20paulo&appid=${openWeatherKey}&lang=pt_br`
+        `https://api.openweathermap.org/data/2.5/weather?q=${encodedQuery}&appid=${openWeatherKey}&lang=pt_br`
     );
 
     return data;
 };
 
-export const fetchForecast = async () => {
+export const fetchForecast = async (query: string) => {
+    const encodedQuery = encodeURI(query);
+
     const data = await fetchData(
-        `https://api.openweathermap.org/data/2.5/forecast?q=sao%20paulo&appid=${openWeatherKey}&lang=pt_br`
+        `https://api.openweathermap.org/data/2.5/forecast?q=${encodedQuery}&appid=${openWeatherKey}&lang=pt_br`
     );
 
     return data;
