@@ -11,6 +11,7 @@ import { convertUnixToTime } from "./utils/convertUnixToTime";
 //Components
 import Header from "./components/layout/Header/Header";
 import InitialScreen from "./components/layout/InitialScreen/InitialScreen";
+import LoadingScreen from "./components/layout/LoadingScreen/LoadingScreen";
 
 const App = () => {
     const { loading } = useContext(LoadingContext);
@@ -32,12 +33,12 @@ const App = () => {
         metric,
     } = useContext(WeatherContext);
 
-    if (loading) {
-        return <p>Carregando...</p>;
-    }
-
     if (!query) {
         return <InitialScreen />;
+    }
+
+    if (loading) {
+        return <LoadingScreen />;
     }
 
     if (!loading && query) {
