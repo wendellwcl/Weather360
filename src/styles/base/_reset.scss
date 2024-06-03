@@ -1,1 +1,30 @@
 @use "normalize.css";
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-size: 100%;
+}
+
+body {
+    line-height: 1.5rem;
+    -webkit-font-smoothing: antialiased;
+}
+
+ol,
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}

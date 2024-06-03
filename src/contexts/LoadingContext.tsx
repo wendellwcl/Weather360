@@ -5,14 +5,14 @@ import { IChildren } from "../interfaces/IChildren.interface";
 import { ILoadingContext } from "../interfaces/ILoadingContext";
 
 const DEFAULT_VALUE: ILoadingContext = {
-    loading: true,
+    loading: false,
     setLoading: () => {},
 };
 
 export const LoadingContext = createContext<ILoadingContext>(DEFAULT_VALUE);
 
 const LoadingContextProvider = ({ children }: IChildren) => {
-    const [loading, setLoading] = useState<boolean>(true);
+    const [loading, setLoading] = useState<boolean>(false);
 
     return <LoadingContext.Provider value={{ loading, setLoading }}>{children}</LoadingContext.Provider>;
 };

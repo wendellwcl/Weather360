@@ -19,6 +19,7 @@ import { IWeatherContext } from "../interfaces/IWeatherContext.interface";
 import { Metrics } from "../types/Metrics.type";
 
 const DEFAULT_VALUE: IWeatherContext = {
+    query: undefined,
     setQuery: () => {},
     location: undefined,
     weatherDescription: undefined,
@@ -88,6 +89,7 @@ const WeatherContextProvider = ({ children }: IChildren) => {
     }, [query]);
 
     const CONTEXT_VALUE = {
+        query,
         setQuery,
         location,
         weatherDescription,

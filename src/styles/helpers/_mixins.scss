@@ -1,0 +1,16 @@
+@mixin btn-default {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+    background-color: var(--color-primary);
+    font-weight: bold;
+    color: var(--text-color-010);
+    transition: all 0.3s;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--color-secondary);
+        color: var(--background-color-010);
+    }
+}

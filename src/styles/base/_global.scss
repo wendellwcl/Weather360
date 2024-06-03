@@ -1,0 +1,14 @@
+html,
+body,
+#root {
+    width: 100vw;
+    min-width: 320px;
+    min-height: 100dvh;
+    background-color: var(--background-color-010);
+}
+
+body,
+#root {
+    max-width: 1440px;
+    margin: 0 auto;
+}

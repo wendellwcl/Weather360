@@ -7,6 +7,7 @@ import { IForecastObj } from "./IForecastObj.interface";
 import { Metrics } from "../types/Metrics.type";
 
 export interface IWeatherContext {
+    query: string | undefined;
     setQuery: React.Dispatch<React.SetStateAction<string | undefined>>;
     location: string | undefined;
     weatherDescription: string | undefined;
