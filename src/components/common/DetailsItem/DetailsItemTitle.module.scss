@@ -1,0 +1,19 @@
+.detailsTitle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+
+    svg {
+        font-size: 1.4em;
+        flex: 0 0 auto;
+    }
+
+    p {
+        text-wrap: nowrap;
+        word-wrap: nowrap;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
