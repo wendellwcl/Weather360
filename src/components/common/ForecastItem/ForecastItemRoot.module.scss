@@ -1,0 +1,10 @@
+.forecastItemRoot {
+    width: 100%;
+    max-width: 160px;
+    display: flex;
+    flex-direction: column;
+    padding: 0.8rem;
+    border-radius: 1.6rem;
+    background-color: var(--background-color-020);
+    overflow: hidden;
+}

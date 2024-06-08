@@ -1,0 +1,8 @@
+.forecastItemIcon {
+    width: 100%;
+    aspect-ratio: 4/3;
+    font-size: clamp(5rem, 10vw, 10rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
