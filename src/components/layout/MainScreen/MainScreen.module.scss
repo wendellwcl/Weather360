@@ -2,7 +2,7 @@
     width: 100%;
     min-height: 100dvh;
     display: grid;
-    grid-template-rows: 60px auto 32px;
+    grid-template-rows: 60px 1fr 32px;
 
     .content {
         width: 100%;

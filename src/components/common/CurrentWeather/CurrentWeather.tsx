@@ -6,24 +6,46 @@ import { WeatherContext } from "../../../contexts/WeatherContext";
 //Utils
 import { convertToCurrentMetric } from "../../../utils/convertToCurrentMetric";
 
+//Icons
+import { FaLocationDot } from "react-icons/fa6";
+
+//Components
+import ValueAndMetricDisplay from "../ValueAndMetricDisplay/ValueAndMetricDisplay";
+
+//Styles
+import styles from "./CurrentWeather.module.scss";
+
 const CurrentWeather = () => {
     const { location, weatherDescription, weatherIcon, temp, tempFeelsLike, metric } = useContext(WeatherContext);
 
     return (
-        <section>
-            <p>location: {location} </p>
+        <section className={styles.currentWeatherContainer}>
+            <div className={styles.locationContainer}>
+                <p>
+                    <FaLocationDot /> <span>{location}</span>
+                </p>
+            </div>
 
-            <p>
-                {weatherDescription} - {weatherIcon}
-            </p>
+            <div className={styles.currentWeather}>
+                <div className={styles.weatherData}>
+                    <div className={styles.temp}>
+                        <ValueAndMetricDisplay
+                            value={convertToCurrentMetric(temp!, metric) as string | number}
+                            metric={metric}
+                        />
+                    </div>
 
-            <p>
-                temp: {convertToCurrentMetric(temp!, metric)} {metric}
-            </p>
+                    <div className={styles.descriptionWrapper}>
+                        <span className={styles.description}>{weatherDescription}</span>
 
-            <p>
-                temp_feels_like: {convertToCurrentMetric(tempFeelsLike!, metric)} {metric}
-            </p>
+                        <span className={styles.feelsLike}>
+                            Sensação: {convertToCurrentMetric(tempFeelsLike!, metric)} {metric}
+                        </span>
+                    </div>
+                </div>
+
+                <div className={styles.weatherIcon}>{weatherIcon}</div>
+            </div>
         </section>
     );
 };
