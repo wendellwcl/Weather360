@@ -1,9 +1,19 @@
 .switchContainer {
-    display: inline-flex;
+    flex: 0 0 auto;
+    padding: 0.8rem 0;
+    background-color: var(--background-color-030);
+    color: var(--text-color-010);
+    border-radius: 0.8rem;
+    overflow: hidden;
 
     label {
+        padding: 0.8rem;
+        font-weight: bold;
+        cursor: pointer;
+
         &:has(input:checked) {
-            background-color: rgb(180, 180, 180);
+            background-color: var(--color-secondary);
+            color: var(--background-color-010);
         }
 
         input {
