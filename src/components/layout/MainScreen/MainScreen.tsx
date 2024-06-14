@@ -2,6 +2,7 @@ import { useContext } from "react";
 
 //Components
 import Dashboard from "../../common/Dashboard/Dashboard";
+import ErrorScreen from "../ErrorScreen/ErrorScreen";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
@@ -13,16 +14,18 @@ import { LoadingContext } from "../../../contexts/LoadingContext";
 import styles from "./MainScreen.module.scss";
 
 const MainScreen = () => {
-    const { loading } = useContext(LoadingContext);
+    const { loading, error } = useContext(LoadingContext);
 
     return (
         <main className={styles["main-screen"]}>
             <Header />
 
             <div className={styles["main-screen__content"]}>
-                {loading && <LoadingScreen />}
+                {loading && !error && <LoadingScreen />}
 
-                {!loading && <Dashboard />}
+                {!loading && !error && <Dashboard />}
+
+                {!loading && error && <ErrorScreen />}
             </div>
 
             <Footer />

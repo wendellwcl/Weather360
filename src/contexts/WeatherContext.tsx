@@ -39,7 +39,7 @@ const DEFAULT_VALUE: IWeatherContext = {
 export const WeatherContext = createContext<IWeatherContext>(DEFAULT_VALUE);
 
 const WeatherContextProvider = ({ children }: IChildren) => {
-    const { setLoading } = useContext(LoadingContext);
+    const { setLoading, setError } = useContext(LoadingContext);
 
     const [query, setQuery] = useState<string | undefined>(undefined);
     const [location, setLocation] = useState<string | undefined>(undefined);
@@ -58,24 +58,30 @@ const WeatherContextProvider = ({ children }: IChildren) => {
     useEffect(() => {
         async function fecthData() {
             if (query) {
+                setError(null);
                 setLoading(true);
 
                 const weather = await fetchWeather(query);
                 const forecast = await fetchForecast(query);
 
-                setLocation(weather.name);
-                setWeatherDescription(weather.weather[0].description);
-                setWeatherIcon(handleWeatherIcon(weather.weather[0].icon));
-                setTemp(weather.main.temp);
-                setTempMin(weather.main.temp_min);
-                setTempMax(weather.main.temp_max);
-                setHumidity(weather.main.humidity);
-                setPressure(weather.main.pressure);
-                setWind(weather.wind.speed);
-                setSunset(weather.sys.sunset);
-                setForecast(handleForecastData(forecast.list));
+                if (weather.error || forecast.error) {
+                    setError(weather.error.message || forecast.error.message);
+                    setLoading(false);
+                } else {
+                    setLocation(weather.name);
+                    setWeatherDescription(weather.weather[0].description);
+                    setWeatherIcon(handleWeatherIcon(weather.weather[0].icon));
+                    setTemp(weather.main.temp);
+                    setTempMin(weather.main.temp_min);
+                    setTempMax(weather.main.temp_max);
+                    setHumidity(weather.main.humidity);
+                    setPressure(weather.main.pressure);
+                    setWind(weather.wind.speed);
+                    setSunset(weather.sys.sunset);
+                    setForecast(handleForecastData(forecast.list));
 
-                setLoading(false);
+                    setLoading(false);
+                }
             }
         }
 

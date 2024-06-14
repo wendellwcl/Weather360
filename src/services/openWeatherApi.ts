@@ -1,3 +1,4 @@
+//Configs
 import { openWeatherKey } from "../config";
 
 async function fetchData(url: string) {
@@ -9,12 +10,14 @@ async function fetchData(url: string) {
             case 200:
                 return data;
             case 404:
-                throw new Error("Cidade não encontrada");
+                throw Error("Localização não encontrada. Tente novamente.");
             default:
-                throw new Error("Ops, algo de errado aconteceu");
+                throw Error("Ops, algo de errado aconteceu. Tente novamente mais tarde.");
         }
     } catch (err) {
-        throw new Error(err as string);
+        return {
+            error: err,
+        };
     }
 }
 
