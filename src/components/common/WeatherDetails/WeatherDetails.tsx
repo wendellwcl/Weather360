@@ -1,38 +1,30 @@
 import { useContext } from "react";
 
+//Components
+import DetailsItem from "../DetailsItem/DetailsItem";
+import ValueAndMetricDisplay from "../ValueAndMetricDisplay/ValueAndMetricDisplay";
+
 //Contexts
 import { WeatherContext } from "../../../contexts/WeatherContext";
+
+//Icons
+import { WiBarometer, WiHorizon, WiRaindrop, WiStrongWind, WiThermometer, WiThermometerExterior } from "react-icons/wi";
+
+//Styles
+import styles from "./WeatherDetails.module.scss";
 
 //Utils
 import { convertToCurrentMetric } from "../../../utils/convertToCurrentMetric";
 import { convertUnixToTime } from "../../../utils/convertUnixToTime";
 
-//Icons
-import {
-    WiBarometer,
-    WiHorizon,
-    WiHorizonAlt,
-    WiRaindrop,
-    WiStrongWind,
-    WiThermometer,
-    WiThermometerExterior,
-} from "react-icons/wi";
-
-//Components
-import DetailsItem from "../DetailsItem/DetailsItem";
-
-//Styles
-import ValueAndMetricDisplay from "../ValueAndMetricDisplay/ValueAndMetricDisplay";
-import styles from "./WeatherDetails.module.scss";
-
 const WeatherDetails = () => {
-    const { tempMin, tempMax, metric, humidity, wind, pressure, sunrise, sunset } = useContext(WeatherContext);
+    const { tempMin, tempMax, metric, humidity, wind, pressure, sunset } = useContext(WeatherContext);
 
     return (
-        <section className={styles.weatherDetailsContainer}>
-            <h3>Detalhes</h3>
+        <section className={styles["weather-details"]}>
+            <h3 className={styles["weather-details__title"]}>Detalhes</h3>
 
-            <div className={styles.weatherDetailsGrid}>
+            <div className={styles["weather-details__grid"]}>
                 <DetailsItem.Root>
                     <DetailsItem.Title icon={<WiThermometerExterior />} title="Mínima" />
                     <DetailsItem.Content>
@@ -77,14 +69,9 @@ const WeatherDetails = () => {
                 </DetailsItem.Root>
 
                 <DetailsItem.Root>
-                    <DetailsItem.Title icon={<WiHorizonAlt />} title="Nascer do Sol" />
-                    <DetailsItem.Content>
-                        <p className={styles.time}>{convertUnixToTime(sunrise!)}</p>
-                    </DetailsItem.Content>
-
                     <DetailsItem.Title icon={<WiHorizon />} title="Pôr do Sol" />
                     <DetailsItem.Content>
-                        <p className={styles.time}>{convertUnixToTime(sunset!)}</p>
+                        <p className={styles["sunset"]}>{convertUnixToTime(sunset!)}</p>
                     </DetailsItem.Content>
                 </DetailsItem.Root>
             </div>

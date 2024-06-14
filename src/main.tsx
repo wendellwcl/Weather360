@@ -1,5 +1,7 @@
-// import React from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
+
+//Components
 import App from "./App";
 
 //Contexts
@@ -10,11 +12,11 @@ import WeatherContextProvider from "./contexts/WeatherContext";
 import "./styles/index.scss";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-    // <React.StrictMode>
-    <LoadingContextProvider>
-        <WeatherContextProvider>
-            <App />
-        </WeatherContextProvider>
-    </LoadingContextProvider>
-    // </React.StrictMode>
+    <React.StrictMode>
+        <LoadingContextProvider>
+            <WeatherContextProvider>
+                <App />
+            </WeatherContextProvider>
+        </LoadingContextProvider>
+    </React.StrictMode>
 );

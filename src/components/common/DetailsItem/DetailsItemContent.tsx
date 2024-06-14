@@ -5,7 +5,7 @@ import { IChildren } from "../../../interfaces/IChildren.interface";
 import styles from "./DetailsItemContent.module.scss";
 
 const DetailsItemContent = ({ children }: IChildren) => {
-    return <div className={styles.detailsContentContainer}>{children}</div>;
+    return <div className={styles["details-content"]}>{children}</div>;
 };
 
 export default DetailsItemContent;

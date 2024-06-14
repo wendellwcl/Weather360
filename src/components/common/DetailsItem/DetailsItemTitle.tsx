@@ -1,16 +1,16 @@
 //Styles
 import styles from "./DetailsItemTitle.module.scss";
 
-interface DetailsItemTitleProps {
+interface IDetailsItemTitleProps {
     icon?: React.ReactNode;
     title: string;
 }
 
-const DetailsItemTitle = ({ icon, title }: DetailsItemTitleProps) => {
+const DetailsItemTitle = ({ icon, title }: IDetailsItemTitleProps) => {
     return (
-        <div className={styles.detailsTitle}>
+        <div className={styles["details-title"]}>
             {icon}
-            <p>{title}</p>
+            <p className={styles["details-title__text"]}>{title}</p>
         </div>
     );
 };

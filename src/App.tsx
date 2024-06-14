@@ -1,11 +1,11 @@
 import { useContext } from "react";
 
-//Contexts
-import { WeatherContext } from "./contexts/WeatherContext";
-
 //Components
 import InitialScreen from "./components/layout/InitialScreen/InitialScreen";
 import MainScreen from "./components/layout/MainScreen/MainScreen";
+
+//Contexts
+import { WeatherContext } from "./contexts/WeatherContext";
 
 const App = () => {
     const { query } = useContext(WeatherContext);

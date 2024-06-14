@@ -1,7 +1,7 @@
-/*
+/**
  * A helper function that returns the tomorrow's date.
  *
- * @param {}.
+ * @param {} null.
  * @returns {tomorrowDate} Tomorrow's date in string format.
  */
 

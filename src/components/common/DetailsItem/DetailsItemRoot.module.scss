@@ -1,9 +1,10 @@
-.detailsItemContainer {
+.c-details-item {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    background-color: var(--background-color-020);
-    border-radius: 1.6rem;
     padding: 1.6rem;
+    background-color: var(--default-color-020);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
 }

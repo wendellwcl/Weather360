@@ -1,4 +1,4 @@
-/*
+/**
  * A helper function that returns the respective weather icon.
  *
  * @param {code} Weather icon code.

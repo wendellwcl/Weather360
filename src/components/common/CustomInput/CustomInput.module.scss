@@ -1,0 +1,69 @@
+@import "../../../styles/helpers/mixins";
+
+@mixin filled {
+    top: -10px;
+    left: 10px;
+    font-size: 1.2rem;
+
+    &::before {
+        opacity: 1;
+    }
+}
+
+.custom-input {
+    width: 100%;
+    position: relative;
+
+    &__input {
+        width: 100%;
+        height: 100%;
+        padding: 0.8rem;
+        font-size: 1.6rem;
+        color: var(--text-color-010);
+        background: transparent;
+        border: 1px solid var(--color-primary);
+        border-radius: var(--border-radius-md);
+        outline: none;
+        transition: all 0.3s;
+
+        &:focus {
+            border: 1px solid var(--color-primary-highlight);
+
+            + label {
+                @include filled;
+            }
+        }
+    }
+
+    &__label {
+        position: absolute;
+        left: 12px;
+        top: 12px;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0 2px;
+        font-size: 1.4rem;
+        line-height: 2rem;
+        color: var(--contrast-color-010);
+        z-index: 1;
+        transition: all 0.2s;
+        pointer-events: none;
+
+        &[class*="filled"] {
+            @include filled;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 100%;
+            height: 5px;
+            opacity: 0;
+            z-index: -1;
+            background: var(--default-color-020);
+        }
+    }
+}

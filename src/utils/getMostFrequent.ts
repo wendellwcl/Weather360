@@ -1,4 +1,4 @@
-/*
+/**
  * A helper function that returns the most repeated item in an array.
  *
  * @param {arr} An array of any type.
@@ -11,7 +11,7 @@ export function getMostFrequent(arr: any[]) {
     let mostFrequentItem;
 
     for (const item of arr) {
-        const itemKey = item as unknown as string;
+        const itemKey = item as string;
         if (frequency[itemKey]) {
             frequency[itemKey]++;
         } else {

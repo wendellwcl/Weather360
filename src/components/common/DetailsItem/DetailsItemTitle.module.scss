@@ -1,19 +1,18 @@
-.detailsTitle {
+@import "../../../styles/helpers/mixins";
+
+.details-title {
     width: 100%;
     display: flex;
     align-items: center;
     font-weight: bold;
+    font-size: 1.2rem;
 
     svg {
-        font-size: 1.4em;
+        font-size: 1.2em;
         flex: 0 0 auto;
     }
 
-    p {
-        text-wrap: nowrap;
-        word-wrap: nowrap;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+    &__text {
+        @include text-overflow-ellipsis;
     }
 }

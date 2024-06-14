@@ -1,4 +1,4 @@
-/*
+/**
  * A helper function that converts values ​​on Unix Timestamp to conventional time.
  *
  * @param {value} Value in Unix Timestamp.

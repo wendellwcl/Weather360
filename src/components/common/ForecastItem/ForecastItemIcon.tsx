@@ -1,14 +1,14 @@
-import React from "react";
+import { ReactNode } from "react";
 
 //Styles
 import styles from "./ForecastItemIcon.module.scss";
 
-interface ForecastItemIconProps {
-    icon: React.ReactNode;
+interface IForecastItemIconProps {
+    icon: ReactNode;
 }
 
-const ForecastItemIcon = ({ icon }: ForecastItemIconProps) => {
-    return <div className={styles.forecastItemIcon}>{icon}</div>;
+const ForecastItemIcon = ({ icon }: IForecastItemIconProps) => {
+    return <div className={styles["forecast-icon"]}>{icon}</div>;
 };
 
 export default ForecastItemIcon;

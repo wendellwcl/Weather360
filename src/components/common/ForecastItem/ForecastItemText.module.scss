@@ -1,13 +1,10 @@
-.forecastItemText {
+@import "../../../styles/helpers/mixins";
+
+.forecast-text {
+    @include text-overflow-ellipsis;
     display: block;
     width: 100%;
-    height: 100%;
     line-height: 1.6em;
     text-align: center;
     text-transform: capitalize;
-    text-wrap: nowrap;
-    word-wrap: nowrap;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }

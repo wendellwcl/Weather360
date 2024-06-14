@@ -1,29 +1,37 @@
-.switchContainer {
+.toggle-switch {
     flex: 0 0 auto;
-    padding: 0.8rem 0;
-    background-color: var(--background-color-030);
-    color: var(--text-color-010);
-    border-radius: 0.8rem;
+    height: 100%;
+    width: auto;
+    display: flex;
+    align-items: center;
+    background-color: var(--default-color-030);
+    border-radius: var(--border-radius-md);
     overflow: hidden;
 
-    label {
+    .toggle-input {
+        width: 36px;
+        height: 100%;
         padding: 0.8rem;
         font-weight: bold;
         cursor: pointer;
 
         &:has(input:checked) {
-            background-color: var(--color-secondary);
-            color: var(--background-color-010);
+            background-color: var(--color-primary);
         }
 
-        input {
+        &__input {
             position: absolute;
-            opacity: 0;
             height: 0;
             width: 0;
+            opacity: 0;
         }
 
-        span {
+        &__text {
+            display: block;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
             pointer-events: none;
         }
     }

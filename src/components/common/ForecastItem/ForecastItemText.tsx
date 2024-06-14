@@ -1,12 +1,12 @@
 //Styles
 import styles from "./ForecastItemText.module.scss";
 
-interface ForecastItemTextProps {
+interface IForecastItemTextProps {
     text: string;
 }
 
-const ForecastItemText = ({ text }: ForecastItemTextProps) => {
-    return <span className={styles.forecastItemText}>{text}</span>;
+const ForecastItemText = ({ text }: IForecastItemTextProps) => {
+    return <span className={styles["forecast-text"]}>{text}</span>;
 };
 
 export default ForecastItemText;

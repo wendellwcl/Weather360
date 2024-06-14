@@ -1,11 +1,12 @@
-import { useContext, useLayoutEffect, useRef } from "react";
+import { useContext } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+
+//Components
+import CustomInput from "../../common/CustomInput/CustomInput";
+import MetricToggleSwitch from "../../common/MetricToggleSwitch/MetricToggleSwitch";
 
 //Contexts
 import { WeatherContext } from "../../../contexts/WeatherContext";
-
-//Components
-import MetricToggleSwitch from "../../common/MetricToggleSwitch/MetricToggleSwitch";
 
 //Icons
 import { FaSearch } from "react-icons/fa";
@@ -18,8 +19,6 @@ type Inputs = {
 };
 
 const Header = () => {
-    const formRef = useRef<HTMLFormElement>(null);
-
     const { setQuery } = useContext(WeatherContext);
 
     const { register, handleSubmit, resetField } = useForm<Inputs>();
@@ -30,29 +29,10 @@ const Header = () => {
         resetField("locationQuery");
     }
 
-    useLayoutEffect(() => {
-        formRef.current?.querySelectorAll("input").forEach((element) => {
-            element.addEventListener("blur", (event) => {
-                const target = event.target as HTMLInputElement;
-
-                if (target.value != "") {
-                    target.nextElementSibling?.classList.add("filled");
-                } else {
-                    target.nextElementSibling?.classList.remove("filled");
-                }
-            });
-        });
-    }, []);
-
     return (
-        <header className={styles.headerContainer}>
-            <form onSubmit={handleSubmit(onSubmit)} ref={formRef}>
-                <div className={styles.inputContainer}>
-                    <input type="text" {...register("locationQuery", { required: true })} />
-                    <label htmlFor="location">
-                        <FaSearch /> Buscar localização
-                    </label>
-                </div>
+        <header className={styles["header"]}>
+            <form onSubmit={handleSubmit(onSubmit)} className={styles["form"]}>
+                <CustomInput {...register("locationQuery")} label="Buscar localização..." icon={<FaSearch />} />
             </form>
 
             <MetricToggleSwitch />

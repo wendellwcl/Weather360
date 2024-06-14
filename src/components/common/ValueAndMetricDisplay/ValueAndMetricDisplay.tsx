@@ -1,20 +1,18 @@
-//Types
-
 //Styles
 import styles from "./ValueAndMetricDisplay.module.scss";
 
-interface ValueAndMetricDisplayProps {
+interface IValueAndMetricDisplayProps {
     value: string | number;
     metric: string;
     position?: "top" | "bottom";
 }
 
-const ValueAndMetricDisplay = ({ value, metric, position }: ValueAndMetricDisplayProps) => {
+const ValueAndMetricDisplay = ({ value, metric, position }: IValueAndMetricDisplayProps) => {
     return (
-        <div className={styles.valueAndMetricContainer}>
-            <div className={styles.value}>
+        <div className={styles["value-and-metric"]}>
+            <div className={styles["value-and-metric__value"]}>
                 <p>{value}</p>
-                <p className={`${styles.metric} ${position}`}>{metric}</p>
+                <p className={`${styles["value-and-metric__metric"]} ${position}`}>{metric}</p>
             </div>
         </div>
     );

@@ -3,13 +3,13 @@ import styles from "./Footer.module.scss";
 
 const Footer = () => {
     return (
-        <footer className={styles.footerContainer}>
-            <span>
+        <footer className={styles["footer"]}>
+            <p className={styles["footer__text"]}>
                 Fonte:{" "}
-                <a href="https://openweathermap.org/" target="_blank">
+                <a href="https://openweathermap.org/" target="_blank" className={styles["footer__text__link"]}>
                     OpenWeather
                 </a>
-            </span>
+            </p>
         </footer>
     );
 };

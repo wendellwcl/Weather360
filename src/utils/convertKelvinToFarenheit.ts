@@ -1,4 +1,4 @@
-/*
+/**
  * A helper function that converts values ​​on the Kelvin scale to the Farenheit scale.
  *
  * @param {value} Value in Kelvin.

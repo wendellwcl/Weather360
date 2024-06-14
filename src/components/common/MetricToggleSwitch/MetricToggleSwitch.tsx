@@ -3,17 +3,17 @@ import { useContext, useLayoutEffect } from "react";
 //Contexts
 import { WeatherContext } from "../../../contexts/WeatherContext";
 
-//Types
-import { Metrics } from "../../../types/Metrics.type";
-
 //Styles
 import styles from "./MetricToggleSwitch.module.scss";
+
+//Types
+import { Metrics } from "../../../types/Metrics.type";
 
 const MetricToggleSwitch = () => {
     const { setMetric } = useContext(WeatherContext);
 
     useLayoutEffect(() => {
-        const arr: NodeListOf<HTMLInputElement> = document.querySelectorAll(".metricInput");
+        const arr: NodeListOf<HTMLInputElement> = document.querySelectorAll(".metric-input");
 
         for (const el of arr) {
             el.addEventListener("change", (e) => {
@@ -24,15 +24,28 @@ const MetricToggleSwitch = () => {
     }, []);
 
     return (
-        <div className={styles.switchContainer}>
-            <label htmlFor="celsius">
-                <input className="metricInput" type="radio" name="metric" id="celsius" value="°C" defaultChecked />
-                <span>°C</span>
+        <div className={styles["toggle-switch"]}>
+            <label htmlFor="celsius" className={styles["toggle-input"]}>
+                <input
+                    className={`metric-input ${styles["toggle-input__input"]}`}
+                    type="radio"
+                    name="metric"
+                    id="celsius"
+                    value="°C"
+                    defaultChecked
+                />
+                <span className={styles["toggle-input__text"]}>°C</span>
             </label>
 
-            <label htmlFor="fahrenheit">
-                <input className="metricInput" type="radio" name="metric" id="fahrenheit" value="°F" />
-                <span>°F</span>
+            <label htmlFor="fahrenheit" className={styles["toggle-input"]}>
+                <input
+                    className={`metric-input ${styles["toggle-input__input"]}`}
+                    type="radio"
+                    name="metric"
+                    id="fahrenheit"
+                    value="°F"
+                />
+                <span className={styles["toggle-input__text"]}>°F</span>
             </label>
         </div>
     );

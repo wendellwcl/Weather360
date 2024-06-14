@@ -5,7 +5,7 @@ import { convertKelvinToFarenheit } from "./convertKelvinToFarenheit";
 //Types
 import { Metrics } from "../types/Metrics.type";
 
-/*
+/**
  * A helper function that converts values ​​from the Kelvin scale to the scale selected by the user.
  *
  * @param {value} Value in Kelvin.

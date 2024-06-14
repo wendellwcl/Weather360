@@ -15,27 +15,18 @@ import { WeatherIconCodes } from "../types/WeatherIconCodes.type";
 
 export function handleForecastData(forecastData: any[]) {
     const tomorrowDate = getTomorrowDate();
-    const firstIndex = getFirstIndex();
+    const firstIndex = getFirstIndex(tomorrowDate);
     const weatherForecast = [];
 
-    function getFirstIndex() {
+    function getFirstIndex(value: string) {
         const index = forecastData.findIndex((item: { dt_txt: string }) => {
-            return item.dt_txt.includes(tomorrowDate);
+            return item.dt_txt.includes(value);
         });
 
         return index;
     }
 
-    function formatTemp(arr: number[]) {
-        const sum = arr.reduce((total, value) => {
-            return total + value;
-        });
-        const arithmeticAverage = sum / arr.length;
-
-        return Number(arithmeticAverage.toFixed(2));
-    }
-
-    function handleIcon(weatherIcon: string[]) {
+    function handleIconsCode(weatherIcon: string[]) {
         const formattedCodes = weatherIcon.map((el) => el.replace(/n|d/, ""));
         const mostFrequent = getMostFrequent(formattedCodes);
         const iconCode = `${mostFrequent}d`;
@@ -44,7 +35,6 @@ export function handleForecastData(forecastData: any[]) {
     }
 
     for (let i = 0; i < 4; i++) {
-        const temp = [];
         const tempMin = [];
         const tempMax = [];
         const weather = [];
@@ -54,7 +44,6 @@ export function handleForecastData(forecastData: any[]) {
             const currentIndex = firstIndex + j + i * 8;
             const currentItem = forecastData[currentIndex];
 
-            temp.push(currentItem.main.temp);
             tempMin.push(currentItem.main.temp_min);
             tempMax.push(currentItem.main.temp_max);
             weather.push(currentItem.weather[0].description);
@@ -62,11 +51,10 @@ export function handleForecastData(forecastData: any[]) {
         }
 
         const formattedData = {
-            temp: formatTemp(temp),
             tempMin: Math.min(...tempMin),
             tempMax: Math.max(...tempMax),
             weather: getMostFrequent(weather),
-            weatherIcon: handleWeatherIcon(handleIcon(weatherIcon)),
+            weatherIcon: handleWeatherIcon(handleIconsCode(weatherIcon)),
         };
 
         weatherForecast.push(formattedData);

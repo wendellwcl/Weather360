@@ -6,12 +6,12 @@ import styles from "./LoadingScreen.module.scss";
 
 const LoadingScreen = () => {
     return (
-        <div className={styles.loadingContainer}>
-            <div className={styles.icon}>
+        <div className={styles["loading"]}>
+            <div className={styles["loading__icon"]}>
                 <img src={icon} alt="icone Weather360" />
             </div>
 
-            <span>Carregando...</span>
+            <span className={styles["loading__text"]}>Carregando...</span>
         </div>
     );
 };

@@ -1,51 +1,44 @@
 @import "../../../styles/helpers/mixins";
 
-.initialScreen {
+.initial-screen {
     width: 100%;
-    height: 100dvh;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 4rem;
 
-    .formContainer {
-        background-color: var(--background-color-020);
-        padding: 3.2rem 2rem;
-        border-radius: 2rem;
+    .c-form {
         width: 100%;
         max-width: 640px;
         display: flex;
         flex-direction: column;
         align-items: center;
+        gap: 1.6rem;
+        background-color: var(--default-color-020);
+        padding: 3.2rem 2rem;
+        border-radius: var(--border-radius-lg);
 
-        .icon {
-            width: 25vw;
+        &__icon {
+            width: 100%;
             max-width: 120px;
-            margin: 1.2rem 0;
         }
 
-        h2 {
-            font-size: 2.4rem;
-            margin: 2rem 0;
-            text-align: center;
-            line-height: 3.2rem;
-            text-wrap: nowrap;
+        &__title {
+            font-size: 2rem;
 
             @media screen and (max-width: 480px) {
                 font-size: 1.6rem;
-                line-height: 2rem;
             }
         }
 
-        form {
+        .form {
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
 
-            .inputContainer {
-                @include input-custom;
-                margin-bottom: 2rem;
-            }
-
-            button {
+            &__btn {
                 @include btn-default;
             }
         }

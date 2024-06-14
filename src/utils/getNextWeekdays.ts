@@ -1,7 +1,7 @@
-/*
+/**
  * A helper function that returns the sequence of the weekdays from today.
  *
- * @param {} .
+ * @param {} null.
  * @returns {sequenceOfTheWeekdays} A string array of the sequence of the weekdays from today.
  */
 
