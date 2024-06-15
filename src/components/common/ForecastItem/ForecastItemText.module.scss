@@ -2,9 +2,8 @@
 
 .forecast-text {
     @include text-overflow-ellipsis;
-    display: block;
     width: 100%;
-    line-height: 1.6em;
     text-align: center;
     text-transform: capitalize;
+    line-height: 1.6em;
 }

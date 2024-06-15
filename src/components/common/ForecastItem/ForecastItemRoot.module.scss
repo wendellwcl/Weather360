@@ -8,4 +8,8 @@
     border-radius: var(--border-radius-md);
     background-color: var(--default-color-020);
     overflow: hidden;
+
+    @media screen and (max-width: 768px) {
+        height: initial;
+    }
 }
